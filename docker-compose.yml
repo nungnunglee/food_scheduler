@@ -1,0 +1,22 @@
+# docker-compose.yml (Example)
+version: '3.8'
+
+services:
+  db:
+    image: mysql # Or your preferred MySQL version
+    container_name: mysql_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD} # Use secrets in production!
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD} # Use secrets in production!
+    ports:
+      # Map host port 3306 to container port 3306
+      # Allows connecting from your host machine using localhost:3306
+      - "3306:${MYSQL_PORT}"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:

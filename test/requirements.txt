@@ -2,3 +2,5 @@ fastapi
 pymysql
 cryptography
 uvicorn[standard]
+SQLAlchemy
+mysql-connector-python

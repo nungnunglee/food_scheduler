@@ -1,7 +1,7 @@
 import pymysql
 
 # 1. mysql 연결
-conn = pymysql.connect(host='localhost', port=3306, user='root', password='dksdidzja1', db='users', charset='utf8')
+conn = pymysql.connect(host='localhost', port=3306, user='root', password='dksdidzja1', db='user_db', charset='utf8')
 
 # 2. 커서 생성하기
 cur = conn.cursor()
