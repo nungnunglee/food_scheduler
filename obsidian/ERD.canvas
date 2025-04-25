@@ -1,0 +1,20 @@
+{
+	"nodes":[
+		{"id":"b1c98ae4246018a3","x":-1520,"y":-400,"width":2413,"height":866,"type":"group","label":"Food Part"},
+		{"id":"ff69081a4e55c784","type":"file","file":"Tables/Food.md","x":-727,"y":-380,"width":800,"height":826},
+		{"id":"f99878310ddd0ae9","type":"file","file":"Tables/DataType.md","x":-1437,"y":-197,"width":540,"height":180},
+		{"id":"1407ad3741a15e9c","type":"file","file":"Tables/DataSource.md","x":-1493,"y":33,"width":596,"height":173},
+		{"id":"2dea60be91455389","type":"file","file":"Tables/MediumCategory.md","x":233,"y":-80,"width":640,"height":200},
+		{"id":"9c76bae30e5ebde3","type":"file","file":"Tables/MajorCategory.md","x":233,"y":-344,"width":583,"height":180},
+		{"id":"c4bc02dddae41120","type":"file","file":"Tables/MimorCategory.md","x":233,"y":206,"width":630,"height":193},
+		{"id":"f8dd1731b472ad48","type":"file","file":"Tables/Origin.md","x":-1500,"y":260,"width":610,"height":186}
+	],
+	"edges":[
+		{"id":"af30309384d00851","fromNode":"ff69081a4e55c784","fromSide":"right","toNode":"9c76bae30e5ebde3","toSide":"left"},
+		{"id":"0e91d77d76a2ce22","fromNode":"ff69081a4e55c784","fromSide":"right","toNode":"2dea60be91455389","toSide":"left"},
+		{"id":"292bbf8d01b6cfcc","fromNode":"ff69081a4e55c784","fromSide":"right","toNode":"c4bc02dddae41120","toSide":"left"},
+		{"id":"603fa8ce1472f1e5","fromNode":"ff69081a4e55c784","fromSide":"left","toNode":"1407ad3741a15e9c","toSide":"right"},
+		{"id":"c719fef164e1ee37","fromNode":"ff69081a4e55c784","fromSide":"left","toNode":"f99878310ddd0ae9","toSide":"right"},
+		{"id":"a05f0f7a69d36283","fromNode":"ff69081a4e55c784","fromSide":"left","toNode":"f8dd1731b472ad48","toSide":"right"}
+	]
+}

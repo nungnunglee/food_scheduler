@@ -4,39 +4,41 @@
     "type": "split",
     "children": [
       {
-        "id": "655e7de67b5326b4",
+        "id": "ada8dbbb0dc188d5",
         "type": "tabs",
         "children": [
           {
-            "id": "ac806c25c546a884",
+            "id": "e6a9a88d066f7b31",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "canvas",
               "state": {
-                "file": "프로젝트 기술 구조.md",
-                "mode": "source",
-                "source": false
+                "file": "ERD.canvas",
+                "viewState": {
+                  "x": -332.62391228320075,
+                  "y": 110.67781585687565,
+                  "zoom": -0.19669618597644994
+                }
               },
-              "icon": "lucide-file",
-              "title": "프로젝트 기술 구조"
+              "icon": "lucide-layout-dashboard",
+              "title": "ERD"
             }
           },
           {
-            "id": "625eb4c134c528ea",
+            "id": "2704f077d723ea24",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "프로젝트 기술 구조.md",
+                "file": "Tables/Origin.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "프로젝트 기술 구조"
+              "title": "Origin"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -93,7 +95,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 200
   },
   "right": {
     "id": "9a452518fad74a1f",
@@ -183,9 +185,24 @@
       "command-palette:명령어 팔레트 열기": false
     }
   },
-  "active": "625eb4c134c528ea",
+  "active": "e6a9a88d066f7b31",
   "lastOpenFiles": [
+    "Nutrient.md",
+    "ERD.canvas",
+    "GenerationMethod.md",
+    "Tables/Origin.md",
+    "Tables/Food.md",
+    "Tables/MediumCategory.md",
+    "Tables/MimorCategory.md",
+    "Tables/DataSource.md",
+    "무제",
+    "Tables/All.md",
+    "Tables/MajorCategory.md",
+    "Tables/DataType.md",
     "Todo.md",
-    "프로젝트 기술 구조.md"
+    "프로젝트 기술 구조.md",
+    "Tables",
+    "프로젝트 구조.canvas",
+    "프로그램 구조.md"
   ]
 }

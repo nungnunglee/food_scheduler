@@ -1,1 +1,8 @@
-{}
+{
+  "showLineNumber": true,
+  "strictLineBreaks": false,
+  "defaultViewMode": "source",
+  "spellcheck": false,
+  "tabSize": 4,
+  "propertiesInDocument": "visible"
+}

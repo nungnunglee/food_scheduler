@@ -1,0 +1,27 @@
+{
+	"nodes":[
+		{"id":"3727266109dcecc9","type":"group","x":40,"y":-420,"width":600,"height":300,"label":"Agent 서버"},
+		{"id":"c8c3f4661077c5ae","x":495,"y":290,"width":250,"height":60,"type":"text","text":""},
+		{"id":"6fee016d5e19f0b2","type":"text","text":"User (flutter)","x":-500,"y":-480,"width":250,"height":60},
+		{"id":"716d0bf6fd971a92","type":"text","text":"쇼핑몰 서버","x":300,"y":-720,"width":250,"height":60},
+		{"id":"b7d7a5688da6279d","type":"text","text":"영양학 \nAgent","x":285,"y":-400,"width":155,"height":60},
+		{"id":"968668000002e309","type":"text","text":"생리학\nAgent","x":285,"y":-331,"width":155,"height":60},
+		{"id":"a967086d1a00e39e","type":"text","text":"공식 지침\nAgent","x":285,"y":-260,"width":155,"height":60},
+		{"id":"200798e6ac994f47","type":"text","text":"영양학 \n문서","x":480,"y":-400,"width":140,"height":60},
+		{"id":"0d5dffa78a07772c","type":"text","text":"생리학\n문서","x":480,"y":-331,"width":140,"height":60},
+		{"id":"d04c1535a9e4918f","type":"text","text":"공식 지침\n문서","x":480,"y":-260,"width":140,"height":60},
+		{"id":"ba3e9d8b6f14a746","type":"text","text":"통합 Agent","x":60,"y":-331,"width":160,"height":60},
+		{"id":"5adc7380b3c9e3e7","x":50,"y":40,"width":250,"height":60,"type":"text","text":"MySQL 서버"},
+		{"id":"4e8d7e5e37ce53c1","x":140,"y":200,"width":250,"height":60,"type":"text","text":"음식"},
+		{"id":"b0d364a5441e9ff5","x":113,"y":320,"width":250,"height":60,"type":"text","text":"음식 ID"}
+	],
+	"edges":[
+		{"id":"83daccc22c872a3b","fromNode":"ba3e9d8b6f14a746","fromSide":"right","toNode":"b7d7a5688da6279d","toSide":"left"},
+		{"id":"9250bc2d078a65e9","fromNode":"ba3e9d8b6f14a746","fromSide":"right","toNode":"968668000002e309","toSide":"left"},
+		{"id":"69776cc5b7a1c567","fromNode":"b7d7a5688da6279d","fromSide":"left","toNode":"ba3e9d8b6f14a746","toSide":"right"},
+		{"id":"b22849219bb29aed","fromNode":"200798e6ac994f47","fromSide":"left","toNode":"b7d7a5688da6279d","toSide":"right"},
+		{"id":"fc11bfe55104f992","fromNode":"0d5dffa78a07772c","fromSide":"left","toNode":"968668000002e309","toSide":"right"},
+		{"id":"43a96f096e1cd7c6","fromNode":"ba3e9d8b6f14a746","fromSide":"right","toNode":"a967086d1a00e39e","toSide":"left"},
+		{"id":"ff63b35dc7afbd0a","fromNode":"d04c1535a9e4918f","fromSide":"left","toNode":"a967086d1a00e39e","toSide":"right"}
+	]
+}
