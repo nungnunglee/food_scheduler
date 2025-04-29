@@ -1,5 +1,6 @@
 services:
   ollama:
+    image: ollama/ollama
     volumes:
       - ollama:/root/.ollama
     container_name: ollama
@@ -15,3 +16,6 @@ services:
             - driver: nvidia
               count: 1
               capabilities: [gpu]
+volumes:
+  ollama:
+    external: true

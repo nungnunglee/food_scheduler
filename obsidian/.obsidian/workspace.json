@@ -11,14 +11,17 @@
             "id": "e6a9a88d066f7b31",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "canvas",
               "state": {
-                "file": "프로젝트 기술 구조.md",
-                "mode": "source",
-                "source": false
+                "file": "ERD.canvas",
+                "viewState": {
+                  "x": -313.5,
+                  "y": 33,
+                  "zoom": -1.335196734673384
+                }
               },
-              "icon": "lucide-file",
-              "title": "프로젝트 기술 구조"
+              "icon": "lucide-layout-dashboard",
+              "title": "ERD"
             }
           },
           {
@@ -184,8 +187,9 @@
   },
   "active": "e6a9a88d066f7b31",
   "lastOpenFiles": [
-    "Todo.md",
+    "프로젝트 구조.canvas",
     "프로젝트 기술 구조.md",
+    "Todo.md",
     "ERD.canvas",
     "GenerationMethod.md",
     "Nutrient.md",
@@ -199,7 +203,6 @@
     "Tables/MajorCategory.md",
     "Tables/DataType.md",
     "Tables",
-    "프로젝트 구조.canvas",
     "프로그램 구조.md"
   ]
 }
