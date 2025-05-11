@@ -1,22 +1,65 @@
-# docker-compose.yml (Example)
 version: '3.8'
 
 services:
+  ollama:
+    image: ollama/ollama
+    volumes:
+      - ollama:/root/.ollama
+    container_name: ollama
+    restart: unless-stopped
+    ports:
+      - 11434:11434
+    environment:
+      - OLLAMA_KEEP_ALIVE=24h
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
   db:
-    image: mysql # Or your preferred MySQL version
+    image: mysql:8.0
     container_name: mysql_db
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD} # Use secrets in production!
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD} # Use secrets in production!
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     ports:
-      # Map host port 3306 to container port 3306
-      # Allows connecting from your host machine using localhost:3306
-      - "3306:${MYSQL_PORT}"
+      - 3306:${MYSQL_PORT}
     volumes:
       - mysql_data:/var/lib/mysql
+    networks:
+      - mysql-network
+  
+  mysql-workbench:
+    image: lscr.io/linuxserver/mysql-workbench:latest
+    container_name: mysql-workbench
+    cap_add:
+      - IPC_LOCK
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    ports:
+      - 3000:3000
+      - 3001:3001
+    restart: unless-stopped
+    volumes:
+      - mysql_workbench_data:/config
+    networks:
+      - mysql-network
 
 volumes:
   mysql_data:
+  mysql_workbench_data:
+  ollama:
+    external: true
+
+networks:
+  mysql-network:
+    driver: bridge
+

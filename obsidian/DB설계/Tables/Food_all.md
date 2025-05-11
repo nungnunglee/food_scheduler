@@ -1,7 +1,7 @@
 
 | csv_name     | attr_name                   | type          | ex                                  |
 | ------------ | --------------------------- | ------------- | ----------------------------------- |
-| 식품코드         | food_id (PK)                | varchar(30)   | D101-004160000-0001                 |
+| 식품코드         | food_id (PK)                | varchar(19)   | D101-004160000-0001                 |
 | 식품명          | food_name (Not Null)        | varchar(50)   | 국밥_돼지머리                             |
 | 데이터구분코드      | data_type_code              | char(1)       | D                                   |
 | 데이터구분명       | data_type_name              | varchar(50)   | 음식                                  |
@@ -30,8 +30,6 @@
 | 데이터생성방법코드    | generation_method_code      | int           | 1                                   |
 | 데이터생성방법명     | generation_method_name      | varchar(10)   | 분석                                  |
 | 데이터기준일자      | reference_date              | date          | 2025-04-08                          |
-| 제공기관코드       | provider_code               | int           | 1471000                             |
-| 제공기관명        | provider_name               | varchar(50)   | 식품의약품안전처                            |
 | 폐기율(%)       | disposal_rate_pct           | decimal(5,2)  | 16                                  |
 | 식품중량         | weight                      | varchar(10)   | 900g                                |
 | 1회 섭취참고량     | serving_size_g              | varchar(10)   | 30g                                 |

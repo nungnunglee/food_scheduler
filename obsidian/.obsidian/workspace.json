@@ -13,6 +13,34 @@
             "state": {
               "type": "markdown",
               "state": {
+                "file": "Todo(엿던것).md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Todo(엿던것)"
+            }
+          },
+          {
+            "id": "cbabaaf894aa4cb7",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Todo(엿던것).md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Todo(엿던것)"
+            }
+          },
+          {
+            "id": "fec994164a0eff46",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
                 "file": "Todo.md",
                 "mode": "source",
                 "source": false
@@ -35,7 +63,8 @@
               "title": "Origin"
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -182,24 +211,28 @@
       "command-palette:명령어 팔레트 열기": false
     }
   },
-  "active": "e6a9a88d066f7b31",
+  "active": "fec994164a0eff46",
   "lastOpenFiles": [
-    "프로젝트 기술 구조.md",
-    "프로젝트 구조.canvas",
+    "Todo(엿던것).md",
     "Todo.md",
-    "Nutrient.md",
-    "GenerationMethod.md",
-    "ERD.canvas",
-    "Tables/All.md",
-    "Tables/Origin.md",
-    "Tables/Food.md",
-    "Tables/MediumCategory.md",
-    "Tables/MimorCategory.md",
-    "Tables/DataSource.md",
-    "무제",
-    "Tables/MajorCategory.md",
-    "Tables/DataType.md",
-    "Tables",
+    "프로젝트 기술 구조.md",
+    "일정.md",
+    "DB설계/ERD.canvas",
+    "DB설계.md",
+    "DB설계",
+    "구조/프로젝트 구조.canvas",
+    "구조",
+    "DB설계/Tables/Food_all.md",
+    "DB설계/Tables/Food.md",
+    "DB설계/Tables/DataType.md",
+    "DB설계/Tables/DataSource.md",
+    "DB설계/Tables/Nutrient.md",
+    "DB설계/Tables/Origin.md",
+    "DB설계/Tables/GenerationMethod.md",
+    "DB설계/Tables/MediumCategory.md",
+    "DB설계/Tables/MimorCategory.md",
+    "DB설계/Tables/MajorCategory.md",
+    "DB설계/Tables",
     "프로그램 구조.md"
   ]
 }
