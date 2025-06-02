@@ -14,21 +14,43 @@ dependencies = [
     "huggingface-hub>=0.30.2",
     "jupyter>=1.1.1",
     "langchain>=0.3.23",
+    "langchain-chroma>=0.2.4",
     "langchain-community>=0.3.21",
     "langchain-experimental>=0.3.4",
     "langchain-google-genai>=2.0.10",
     "langchain-huggingface>=0.2.0",
     "langchain-ollama>=0.3.2",
+    "langchain-openai>=0.3.17",
+    "langchain-qdrant>=0.2.0",
     "langchainhub>=0.1.21",
     "langgraph>=0.3.31",
     "langgraph-swarm>=0.0.10",
+    "matplotlib>=3.10.3",
     "mysql-connector-python>=9.3.0",
     "ollama>=0.4.8",
     "pandas>=2.2.3",
     "pymysql>=1.1.1",
     "pypdf>=5.4.0",
+    "qdrant-client>=1.14.2",
+    "selenium>=4.33.0",
     "sqlalchemy>=2.0.40",
+    "tabulate>=0.9.0",
     "tiktoken>=0.9.0",
+    "torch>=2.7.0",
     "transformers>=4.51.3",
+    "unstructured[pdf]>=0.17.2",
     "uvicorn[standard]>=0.34.2",
 ]
+
+[tool.uv.sources]
+torch = [
+  { index = "pytorch-cu128", marker = "sys_platform != 'linux'" },
+]
+torchvision = [
+  { index = "pytorch-cu128", marker = "sys_platform != 'linux'" },
+]
+
+[[tool.uv.index]]
+name = "pytorch-cu128"
+url = "https://download.pytorch.org/whl/cu128"
+explicit = true
