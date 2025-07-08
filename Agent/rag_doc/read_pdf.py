@@ -108,7 +108,7 @@ def get_docs_from_pdf(pdf_path: str, chunk_size: int = 1000, chunk_overlap: int 
     with fitz.open(pdf_path) as doc:
         file_name = os.path.basename(pdf_path)
 
-        for page_num in tqdm(range(doc.page_count), desc=f"처리 중: {file_name}"):
+        for page_num in tqdm(range(doc.page_count), desc=f"document화 진행 중: {file_name}"):
             current_section = get_section_to_idx(doc, page_num+1)
             contents_docs = get_contents_from_pdf(file_name, doc, page_num, current_section, text_splitter=text_splitter)
             documents.extend(contents_docs)

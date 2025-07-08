@@ -249,11 +249,32 @@ class DBManager:
         # 영양 정보
         if food.nutrition:
             result['nutrition'] = {
-                'energy_kcal': float(food.nutrition.energy_kcal) if food.nutrition.energy_kcal else None,
-                'protein_g': float(food.nutrition.protein_g) if food.nutrition.protein_g else None,
-                'fat_g': float(food.nutrition.fat_g) if food.nutrition.fat_g else None,
-                'carbohydrate_g': float(food.nutrition.carbohydrate_g) if food.nutrition.carbohydrate_g else None,
-                'sugars_g': float(food.nutrition.sugars_g) if food.nutrition.sugars_g else None
+                'serving_size_g': food.nutrition.serving_size_g,
+                'nutrient_reference_amount_g': food.nutrition.nutrient_reference_amount_g,
+                'energy_kcal': food.nutrition.energy_kcal,
+                'moisture_g': food.nutrition.moisture_g,
+                'protein_g': food.nutrition.protein_g,
+                'fat_g': food.nutrition.fat_g,
+                'ash_g': food.nutrition.ash_g,
+                'carbohydrate_g': food.nutrition.carbohydrate_g,
+                'sugars_g': food.nutrition.sugars_g,
+                'dietary_fiber_g': food.nutrition.dietary_fiber_g,
+                'calcium_mg': food.nutrition.calcium_mg,
+                'iron_mg': food.nutrition.iron_mg,
+                'phosphorus_mg': food.nutrition.phosphorus_mg,
+                'potassium_mg': food.nutrition.potassium_mg,
+                'sodium_mg': food.nutrition.sodium_mg,
+                'vitamin_a_ug_rae': food.nutrition.vitamin_a_ug_rae,
+                'retinol_ug': food.nutrition.retinol_ug,
+                'beta_carotene_ug': food.nutrition.beta_carotene_ug,
+                'thiamin_mg': food.nutrition.thiamin_mg,
+                'riboflavin_mg': food.nutrition.riboflavin_mg,
+                'niacin_mg': food.nutrition.niacin_mg,
+                'vitamin_c_mg': food.nutrition.vitamin_c_mg,
+                'vitamin_d_ug': food.nutrition.vitamin_d_ug,
+                'cholesterol_mg': food.nutrition.cholesterol_mg,
+                'saturated_fat_g': food.nutrition.saturated_fat_g,
+                'trans_fat_g': food.nutrition.trans_fat_g
             }
         
         return result
@@ -330,8 +351,9 @@ class DBManager:
         # 세션 확인
         self.start_session()
         
-        tags = self.session.query(FoodTag.tag_name).all()
-        return [tag[0] for tag in tags]
+        tags = self.session.query(FoodTag).all()
+        return tags
+        # return [tag[0] for tag in tags]
 
 
 # 예시 코드

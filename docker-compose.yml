@@ -52,6 +52,7 @@ services:
       - mysql_workbench_data:/config
     networks:
       - mysql-network
+  
   qdrant:
     image: qdrant/qdrant:latest
     restart: always
@@ -67,7 +68,7 @@ services:
       - source: qdrant_config
         target: /qdrant/config/production.yaml
     volumes:
-      - ./qdrant_data:/qdrant/storage
+      - qdrant_data:/qdrant/storage
 
 configs:
   qdrant_config:
@@ -75,6 +76,7 @@ configs:
       log_level: INFO
       
 volumes:
+  qdrant_data:
   mysql_data:
   mysql_workbench_data:
   ollama:
