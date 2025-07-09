@@ -12,6 +12,7 @@ __all__ = [
     "LoginLog",
     "UserBody",
     "UserSchedule",
+    "ScheduleFood",
     "UserFoodInventory",
 ]
 
@@ -90,7 +91,11 @@ class UserBody(Base):
     tall = Column(Float)
     weight = Column(Float)
     sleep_pattern = Column(String(50))
-    activity = Column(String(50))
+    activity_level = Column(String(50))
+    gender = Column(String(50))
+    diseases = Column(String(50))
+    favorite_foods = Column(String(500))
+    disliked_foods = Column(String(500))
 
     user_info = relationship("UserInfo", uselist=False, back_populates="user_body")
 
@@ -102,10 +107,23 @@ class UserSchedule(Base):
 
     uuid = Column(String(36), ForeignKey("user_info.uuid"), index=True)
     datetime = Column(DateTime, default=func.now())
-    food_name = Column(String(255), nullable=False)
-    food_id = Column(String(30), ForeignKey("food_info.food_id"))
+    meal_id = Column(String(36), nullable=False)
 
     user_info = relationship("UserInfo", uselist=False, back_populates="user_schedule")
+    schedule_foods = relationship("ScheduleFood", back_populates="user_schedule")
+
+class ScheduleFood(Base):
+    __tablename__ = "schedule_food"
+    __table_args__ = (
+        PrimaryKeyConstraint('meal_id', 'food_name'),
+    )
+
+    meal_id = Column(String(36), ForeignKey("user_schedule.meal_id"), index=True)
+    food_id = Column(String(30), ForeignKey("food_info.food_id"))
+    food_name = Column(String(255), nullable=False)
+    quantity = Column(Float, nullable=False)  # g 단위
+
+    user_schedule = relationship("UserSchedule", back_populates="schedule_foods")
 
 class UserFoodInventory(Base):
     __tablename__ = "user_food_inventory"
