@@ -5,7 +5,7 @@ if project_root not in sys.path:
     sys.path.insert(0, project_root)
 
 from db.database import SessionLocal
-from db.model.food_table import *
+from db.tables.food_table import *
 from sqlalchemy.orm import Session
 from typing import List, Optional, Dict, Any, Union, Tuple
 from contextlib import contextmanager
@@ -13,8 +13,45 @@ from datetime import datetime
 import uuid
 import bcrypt
 
-from db.model.user_table import UserInfo, UserAuth, Password, SocialLogin, LoginLog
+from db.tables.user_table import UserInfo, UserAuth, Password, SocialLogin, LoginLog
 
+
+"""
+dbmanager
+    food:
+        get:
+            food:
+                - by_id
+                - by_name
+                - by_tag
+                - by_category
+                - by_nutrition
+        set:
+            food:
+                - set_food
+                - delete_food
+                - add_tags
+                - remove_tags
+            
+    user:
+        get:
+            user:
+                - by_uuid
+                - by_email
+                - by_phone
+            log:
+                - record_login
+        set:
+            user:
+                - create_user_by_password
+                - create_user_by_oauth
+                - set_user_body
+                - set_user_schedule
+                - set_user_food_inventory
+                - delete_user_food_inventory
+                - delete_user_schedule
+                - delete_user_by_uuid
+"""
 
 class DBManager:
     """
@@ -28,49 +65,34 @@ class DBManager:
     
     def __enter__(self):
         """컨텍스트 매니저 진입 시 세션 시작"""
-        self.start_session()
+        if self.session is None:
+            self.session = SessionLocal()
         return self
     
     def __exit__(self, exc_type, exc_val, exc_tb):
         """컨텍스트 매니저 종료 시 세션 종료"""
         if exc_type is not None:
             # 예외 발생 시 롤백
-            self.rollback()
-        self.close_session()
-    
-    def start_session(self):
-        """세션 시작"""
-        if self.session is None:
-            self.session = SessionLocal()
-        return self.session
-    
-    def close_session(self):
-        """세션 종료"""
+            if self.session:
+                self.session.rollback()
+        
         if self.session:
             self.session.close()
             self.session = None
-    
-    def commit(self):
-        """현재 트랜잭션 커밋"""
-        if self.session:
-            self.session.commit()
-    
-    def rollback(self):
-        """현재 트랜잭션 롤백"""
-        if self.session:
-            self.session.rollback()
-    
+
     @contextmanager
     def transaction(self):
         """트랜잭션 컨텍스트 매니저"""
+        if self.session is None:
+            self.session = SessionLocal()
         try:
             yield self
-            self.commit()
+            self.session.commit()
         except Exception as e:
-            self.rollback()
+            self.session.rollback()
             raise e
-    
-    def get_or_create_tag(self, tag_name: str) -> FoodTag:
+    # 음식 관련 메서드
+    def get_tag(self, tag_name: str = None, tag_id: str = None) -> FoodTag:
         """
         태그명으로 기존 태그를 조회하거나 새로운 태그를 생성합니다.
         
@@ -80,9 +102,10 @@ class DBManager:
         Returns:
             FoodTag: 기존 또는 새로 생성된 태그 객체
         """
-        # 세션 확인
-        self.start_session()
-        
+        if self.session is None:
+            raise RuntimeError("세션이 활성화되지 않았습니다. DBManager를 with 구문이나 transaction 컨텍스트 내에서 사용하세요.")
+
+
         # 기존 태그 조회
         existing_tag = self.session.query(FoodTag).filter(FoodTag.tag_name == tag_name).first()
         
@@ -691,15 +714,14 @@ class DBManager:
             self.session.rollback()
             return False
 
+db_manager = DBManager()
 
 # 예시 코드
 if __name__ == "__main__":
-    # DBManager 사용 예시
-    db = DBManager()
     
     try:
         # 컨텍스트 매니저를 사용한 예제
-        with db as manager:
+        with db_manager as manager:
             # 태그 추가
             manager.add_food_tags("D102-082290000-0001", ["매운맛", "한식", "국물요리"])
             

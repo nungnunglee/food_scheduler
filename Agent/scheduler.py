@@ -5,8 +5,8 @@ from langchain_core.messages import BaseMessage
 from langgraph.graph.message import add_messages
 from typing import Sequence
 from pydantic import BaseModel, Field
-from prompt import recommender_prompt, plan_prompt
-from tools import (
+from Agent.prompts.prompt import recommender_prompt, plan_prompt
+from Agent.tools.tools import (
     retriever_tool, format_nutrient_json, generate_weekly_meal_plan, 
     get_food_nutrient,
     WeeklyMealPlan, NutrientData
