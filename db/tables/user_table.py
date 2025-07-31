@@ -107,7 +107,7 @@ class UserSchedule(Base):
 
     uuid = Column(String(36), ForeignKey("user_info.uuid"), index=True)
     datetime = Column(DateTime, default=func.now())
-    meal_id = Column(String(36), nullable=False)
+    meal_id = Column(Integer, nullable=False, autoincrement=True)
 
     user_info = relationship("UserInfo", uselist=False, back_populates="user_schedule")
     schedule_foods = relationship("ScheduleFood", back_populates="user_schedule")

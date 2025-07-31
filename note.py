@@ -37,33 +37,51 @@
 #     print_food_nutrition("D101-004160000-0001")
 #     len_food_table()
 
-from contextlib import contextmanager
+# from contextlib import contextmanager
 
-class with_test:
-    def __init__(self):
-        print("init")
-        self.test1 = 1
+# class with_test:
+#     def __init__(self):
+#         print("init")
+#         self.test1 = 1
     
-    def __enter__(self):
-        print("enter")
-        return self
+#     def __enter__(self):
+#         print("enter")
+#         return self
     
-    def __exit__(self, exc_type, exc_val, exc_tb):
-        print("exit")
+#     def __exit__(self, exc_type, exc_val, exc_tb):
+#         print("exit")
 
-    @contextmanager
-    def test_context(self):
-        print("test_context enter")
-        yield self
-        print("test_context exit")
+#     @contextmanager
+#     def test_context(self):
+#         print("test_context enter")
+#         yield self
+#         print("test_context exit")
 
-if __name__ == "__main__":
-    print("main")
-    with with_test().test_context() as test:
-        print(test.test1)
-        # with test.test_context() as test2:
-        #     print(test2.test1)
-    print("main end")
+# if __name__ == "__main__":
+#     print("main")
+#     with with_test().test_context() as test:
+#         print(test.test1)
+#         # with test.test_context() as test2:
+#         #     print(test2.test1)
+#     print("main end")
 
+import os
+from dotenv import load_dotenv
+load_dotenv()
+import smtplib
+from email.mime.text import MIMEText
 
+smtp = smtplib.SMTP('smtp.gmail.com', 587)
 
+smtp.ehlo()
+
+smtp.starttls()
+
+smtp.login(os.getenv('EMAIL_USER'), os.getenv('EMAIL_PASSWORD'))
+
+msg = MIMEText('내용 : 본문 내용')
+msg['Subject'] = '제목: 파이썬으로 gmail 보내기'
+
+smtp.sendmail('lkw4582@gmail.com', 'lkw4582@gmail.com', msg.as_string())
+
+smtp.quit()

@@ -52,10 +52,69 @@ class FoodTag(BaseModel):
     tag_id: int
     tag_name: str
 
+class FoodCategory(BaseModel):
+    major_category_name: str
+    medium_category_name: str
+    minor_category_name: str
+    detail_category_name: str
+    representative_food_name: str
 
 class Food(BaseModel):
     food_id: str | None = None
     food_name: str
     food_nutrition: FoodNutrition | None = None
     food_tags: List[FoodTag] | None = None
-    food_category: str | None = None
+    food_category: FoodCategory | None = None
+
+    @classmethod
+    def from_db_model(cls, food_info) -> 'Food':
+        if (food_nutrition := food_info.nutrition) is not None:
+            food_nutrition = FoodNutrition(
+                weight=food_info.nutrition.weight,
+                serving_size_g=food_info.nutrition.serving_size_g,
+                nutrient_reference_amount_g=food_info.nutrition.nutrient_reference_amount_g,
+                energy_kcal=food_info.nutrition.energy_kcal,
+                protein_g=food_info.nutrition.protein_g,
+                fat_g=food_info.nutrition.fat_g,
+                carbohydrate_g=food_info.nutrition.carbohydrate_g,
+                sugars_g=food_info.nutrition.sugars_g,
+                sodium_mg=food_info.nutrition.sodium_mg,
+                cholesterol_mg=food_info.nutrition.cholesterol_mg,
+                saturated_fat_g=food_info.nutrition.saturated_fat_g,
+                trans_fat_g=food_info.nutrition.trans_fat_g,
+                moisture_g=food_info.nutrition.moisture_g,
+                ash_g=food_info.nutrition.ash_g,
+                dietary_fiber_g=food_info.nutrition.dietary_fiber_g,
+                calcium_mg=food_info.nutrition.calcium_mg,
+                iron_mg=food_info.nutrition.iron_mg,
+                phosphorus_mg=food_info.nutrition.phosphorus_mg,
+                potassium_mg=food_info.nutrition.potassium_mg,
+                vitamin_a_ug_rae=food_info.nutrition.vitamin_a_ug_rae,
+                retinol_ug=food_info.nutrition.retinol_ug,
+                beta_carotene_ug=food_info.nutrition.beta_carotene_ug,
+                thiamin_mg=food_info.nutrition.thiamin_mg,
+                riboflavin_mg=food_info.nutrition.riboflavin_mg,
+                niacin_mg=food_info.nutrition.niacin_mg,
+                vitamin_c_mg=food_info.nutrition.vitamin_c_mg,
+                vitamin_d_ug=food_info.nutrition.vitamin_d_ug,
+            )
+
+        if (food_tags := food_info.tags) is not None:
+            food_tags = [FoodTag(tag_id=tag.tag_id, tag_name=tag.tag_name) for tag in food_info.tags]
+        
+        if (food_category := food_info.category) is not None:
+            food_category = FoodCategory(
+                major_category_name=food_info.category.major_category_name,
+                medium_category_name=food_info.category.medium_category_name,
+                minor_category_name=food_info.category.minor_category_name,
+                detail_category_name=food_info.category.detail_category_name,
+                representative_food_name=food_info.category.representative_food_name,
+            )
+
+        return Food(
+            food_id=food_info.food_id,
+            food_name=food_info.food_name,
+            food_nutrition=food_nutrition,
+            food_tags=food_tags,
+            food_category=food_category,
+        )

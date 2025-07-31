@@ -17,7 +17,7 @@ class FoodInfo(Base):
     __tablename__ = "food_info"
 
     food_id = Column(String(19), primary_key=True, index=True)  # 식품코드: D101-004160000-0001
-    food_name = Column(String(1000), nullable=False)  # 식품명: 국밥_돼지머리
+    food_name = Column(String(1000), unique=True, nullable=False)  # 식품명: 국밥_돼지머리
     data_type_code = Column(String(1), nullable=False)  # 데이터구분코드: D, F
 
     # Relationships

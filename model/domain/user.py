@@ -74,6 +74,24 @@ class User(BaseModel):
     subscription: Subscription | None = None
     meal_plan: List[MealPlan] | None = None
 
+    @classmethod
+    def from_db_model(cls, user_info) -> 'User':
+        return User(
+            uuid=user_info.uuid,
+            nickname=user_info.nickname,
+            user_auth=UserAuth(email=user_info.user_auth.email, phone=user_info.user_auth.phone),
+            user_body=UserBody(
+                age=user_info.user_body.age,
+                gender=user_info.user_body.gender,
+                tall=user_info.user_body.tall,
+                weight=user_info.user_body.weight,
+            ),
+            password=user_info.password.password,
+            social_login=UserSocialLogin(social_code=user_info.social_login.social_code, access_token=user_info.social_login.access_token),
+            subscription=Subscription(plan=user_info.subscription.plan, purchase=user_info.subscription.purchase, expired=user_info.subscription.expired),
+            meal_plan=[MealPlan(datetime=meal.datetime, food_list=[Food.from_db_model(food) for food in meal.food_list]) for meal in user_info.meal_plan],
+        )
+
 
 if __name__ == "__main__":
     user = User(
